@@ -4,4 +4,9 @@
 #              The player is able to see the GUI through the turtle library and the data is processed
 #              and anylized through the pandas library.
 import pandas
-from turtle import Turtle
+from turtle import Turtle, Screen
+
+screen = Screen()
+screen.title("U.S. States Quiz")
+
+screen.exitonclick()
