@@ -22,27 +22,16 @@ screen.addshape(quiz_image)
 turtle.shape(quiz_image)
 US_data = pandas.read_csv("./data/50_states.csv")
 # print(US_data.state[1])
-game_is_playing = True
+all_the_states = US_data.state.to_list()
 guess_list = []
-while game_is_playing:
+while len(guess_list) < 50:
     answer_state = screen.textinput(title="Guess the State", prompt="What is another State's name?").title()
-    # print(US_data.x[1])
-    for state in US_data.state:
-        if state == answer_state:
-
-            location = (US_data[US_data.state == str(state)])
-            # print(location.x)
-            location_x = int(location.x)
-            location_y = int(location.y)
-            # print(location_x)
-            guess_list.append(state)
-            pen.penup()
-            pen.goto(location_x, location_y)
-            pen.pendown()
-            pen.write(state, font=("Calibri", 8, "bold"))
-            score += 1
-
-
+    if answer_state in all_the_states:
+        pen.penup()
+        state_data = US_data[US_data.state == answer_state]
+        pen.goto(int(state_data.x), int(state_data.y))
+        pen.write(answer_state)
+        guess_list.append(answer_state)
 
 
 
