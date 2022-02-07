@@ -43,13 +43,16 @@ while len(guess_list) < 50:
         guess_list.append(answer_state)
 
 
-# state_to_learn after the user clicks exit
-to_learn = []
+# # state_to_learn after the user clicks exit
+# to_learn = []
+#
+# # loop through all the states and check if they have any states that they didnt answer
+# for states in US_data.state:
+#     if states not in guess_list:
+#         to_learn.append(states)
 
-# loop through all the states and check if they have any states that they didnt answer
-for states in US_data.state:
-    if states not in guess_list:
-        to_learn.append(states)
+# simplified the lofic using comprehension
+to_learn = [states for states in US_data.state if states not in guess_list]
 
 # create a new data for csv
 new_data = pandas.DataFrame(to_learn)
